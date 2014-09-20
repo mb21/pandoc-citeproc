@@ -124,7 +124,7 @@ formatOutput o =
                                 then Formatted [Strong [Str "???"]]
                                 else formatOutput (OStr (show i) f)
       OName  _ os _    f  -> formatOutput (Output os f)
-      OContrib _ _ os _ _ -> format os
+      OContrib _ _ os _ _ -> Formatted [Span ("",["ref-contributor"],[]) $ unFormatted (format os)]
       OLoc     os      f  -> formatOutput (Output os f)
       Output   []      _  -> Formatted []
       Output   os      f  -> addFormatting f $ format os
